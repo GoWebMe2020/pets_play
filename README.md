@@ -28,6 +28,7 @@ Have a API only application
 - Ruby 3.0.2 (`rvm use 3.0.2`)
 - Ruby on Rails 6.1.7
 - Postgres Setup (https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-ruby-on-rails-application-on-macos)
+- RSpec (https://relishapp.com/rspec/rspec-rails/docs/gettingstarted)
 
 *Notes: This backend will act as an API only. The frontend will require permissions to make requests and get responses to this API.*
 
@@ -40,24 +41,24 @@ Have a API only application
 
 *Note: These user stories are API based only.*
 
-- As a user, I would like to register an account for myself with and email and password
-- As a user, I would like to be able to log in with my account
-- As a user, I would like to log out from my account
-- As a user, I would like to create a profile for my pet
-- As a user, I would like the profile to include
-  - Name (Pet's)
-  - Surname (Owner's)
-  - Breed
-  - Sex
-  - Birthday
-  - Email
-  - Mobile
-  - Address
-- As a user, I would like the ability to edit my pet's profile
-- As a user, I would like to have the ability to delete my pet's profile
-- As a user, I would like to see other matched pets to make a selection for potential pet friends
-- As a user, I would like my selected pet profiles to be stored so I can visit this list whenever I want
-- As a user, I would like delete unwanted pet profiles
+- <input type="checkbox"> As a user, I would like to register an account for myself with and email and password
+- <input type="checkbox"> As a user, I would like to be able to log in with my account
+- <input type="checkbox"> As a user, I would like to log out from my account
+- <input type="checkbox"> As a user, I would like to create a profile for my pet
+- <input type="checkbox"> As a user, I would like the profile to include
+  - <input type="checkbox"> Name (Pet's)
+  - <input type="checkbox"> Surname (Owner's)
+  - <input type="checkbox"> Breed
+  - <input type="checkbox"> Sex
+  - <input type="checkbox"> Birthday
+  - <input type="checkbox"> Email
+  - <input type="checkbox"> Mobile
+  - <input type="checkbox"> Address
+- <input type="checkbox"> As a user, I would like the ability to edit my pet's profile
+- <input type="checkbox"> As a user, I would like to have the ability to delete my pet's profile
+- <input type="checkbox"> As a user, I would like to see other matched pets to make a selection for potential pet friends
+- <input type="checkbox"> As a user, I would like my selected pet profiles to be stored so I can visit this list whenever I want
+- <input type="checkbox"> As a user, I would like delete unwanted pet profiles
 
 ## Target Audience
 

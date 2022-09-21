@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
 
   def logout
     reset_session
+    set_current_user
     render json: {
       status: 200,
       user_logged_in: false

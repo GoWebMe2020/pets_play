@@ -2,11 +2,8 @@ require 'rails_helper'
 
 describe "Registrations Controller", type: :request do
   describe "POST #create" do
-    before(:each) do
-      p "This is before each test"
-    end
     context "Does not create a new user" do
-      it "if the password and password confirnmation is incorrect" do
+      it "if the password and password confirnmation are incorrect" do
         expect{
           post "/registrations", :params => {
             user: {
@@ -51,6 +48,120 @@ describe "Registrations Controller", type: :request do
         expect(response_data["user"]["email"]).to eq("test@mail.com")
       end
     end
+  end
 
+  describe "PATCH #update" do
+    context "If the user is logged in" do
+      it "updates the user details" do
+        user = User.create!(email: "test@mail.com", password: "123456", password_confirmation: "123456")
+
+        post "/sessions", :params => {
+          user: {
+            email: "test@mail.com",
+            password: "123456"
+          }
+        }
+
+        patch "/registrations/#{user.id}", :params => {
+          user: {
+            email: "new_test@mail.com",
+            password: "123456",
+            password_confirmation: "123456"
+          }
+        }
+
+        response_data = JSON.parse(response.body)
+
+        expect(response_data["status"]).to eq("updated")
+        expect(response_data["user_logged_in"]).to be(true)
+        expect(response_data["user"]["email"]).to eq("new_test@mail.com")
+      end
+    end
+
+    context "Does not update a user" do
+      it "if the user is not logged in" do
+        user = User.create!(email: "test@mail.com", password: "123456", password_confirmation: "123456")
+
+        patch "/registrations/#{user.id}", :params => {
+          user: {
+            email: "new_test@mail.com",
+            password: "123456",
+            password_confirmation: "123456"
+          }
+        }
+
+        response_data = JSON.parse(response.body)
+        expect(response_data["status"]).to eq(500)
+
+        unchanged_user = User.find(user.id)
+        expect(unchanged_user.email).to eq("test@mail.com")
+      end
+
+      it "if the password and password confirnmation are incorrect" do
+        user = User.create!(email: "test@mail.com", password: "123456", password_confirmation: "123456")
+
+        post "/sessions", :params => {
+          user: {
+            email: "test@mail.com",
+            password: "123456"
+          }
+        }
+
+        patch "/registrations/#{user.id}", :params => {
+          user: {
+            email: "new_test@mail.com",
+            password: "123456",
+            password_confirmation: "123457"
+          }
+        }
+
+        response_data = JSON.parse(response.body)
+        expect(response_data["status"]).to eq(500)
+
+        unchanged_user = User.find(user.id)
+        expect(unchanged_user.email).to eq("test@mail.com")
+      end
+    end
+  end
+
+  describe "DELETE #destory" do
+    context "It deletes a user" do
+      it "if they are logged in" do
+        user = User.create!(email: "test@mail.com", password: "123456", password_confirmation: "123456")
+
+        post "/sessions", :params => {
+          user: {
+            email: "test@mail.com",
+            password: "123456"
+          }
+        }
+
+        delete "/registrations/#{user.id}"
+
+        response_data = JSON.parse(response.body)
+
+        expect(response_data["status"]).to eq("destroyed")
+        expect(response_data["user_logged_in"]).to be(false)
+        expect(response_data["user"]).to be(nil)
+
+        expect(User.count).to be(0)
+        expect(User.first).to be(nil)
+      end
+    end
+
+    context "Does notdelete a user" do
+      it "if they are not logged in" do
+        user = User.create!(email: "test@mail.com", password: "123456", password_confirmation: "123456")
+
+        delete "/registrations/#{user.id}"
+
+        response_data = JSON.parse(response.body)
+
+        expect(response_data["status"]).to eq(500)
+
+        expect(User.count).to be(1)
+        expect(User.first).to eq(user)
+      end
+    end
   end
 end
