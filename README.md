@@ -59,6 +59,26 @@ Have a API only application
 - [ ] As a user, I would like my selected pet profiles to be stored so I can visit this list whenever I want
 - [ ] As a user, I would like delete unwanted pet profiles
 
+## Testing
+
+This API uses RSpec to test the functionality.
+
+To run the whole test suite, simple run the below from the root directory
+
+```bash
+~ rspec ./spec
+```
+To test only a specific file,
+
+```bash
+~ rspec ./spec/path/file_name.rb
+```
+To test only a specific test,
+
+```bash
+~ rspec ./spec/path/file_name.rb:line_number
+```
+
 ## Target Audience
 
 People with either dogs, cats or birds.
