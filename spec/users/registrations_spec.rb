@@ -149,7 +149,7 @@ describe "Registrations Controller", type: :request do
       end
     end
 
-    context "Does notdelete a user" do
+    context "Does not delete a user" do
       it "if they are not logged in" do
         user = User.create!(email: "test@mail.com", password: "123456", password_confirmation: "123456")
 

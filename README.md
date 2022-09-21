@@ -41,24 +41,23 @@ Have a API only application
 
 *Note: These user stories are API based only.*
 
-- <input type="checkbox"> As a user, I would like to register an account for myself with and email and password
-- <input type="checkbox"> As a user, I would like to be able to log in with my account
-- <input type="checkbox"> As a user, I would like to log out from my account
-- <input type="checkbox"> As a user, I would like to create a profile for my pet
-- <input type="checkbox"> As a user, I would like the profile to include
-  - <input type="checkbox"> Name (Pet's)
-  - <input type="checkbox"> Surname (Owner's)
-  - <input type="checkbox"> Breed
-  - <input type="checkbox"> Sex
-  - <input type="checkbox"> Birthday
-  - <input type="checkbox"> Email
-  - <input type="checkbox"> Mobile
-  - <input type="checkbox"> Address
-- <input type="checkbox"> As a user, I would like the ability to edit my pet's profile
-- <input type="checkbox"> As a user, I would like to have the ability to delete my pet's profile
-- <input type="checkbox"> As a user, I would like to see other matched pets to make a selection for potential pet friends
-- <input type="checkbox"> As a user, I would like my selected pet profiles to be stored so I can visit this list whenever I want
-- <input type="checkbox"> As a user, I would like delete unwanted pet profiles
+- [x] As a user, I would like to register an account for myself with and email and password
+- [x] As a user, I would like to be able to log in with my account
+- [x] As a user, I would like to log out from my account
+- [x] As a user, I would like to edit my account details
+- [x] As a user, I would like to delete my account
+- [x] As a user, I would like to create a profile for my pet
+- [x] As a user, I would like the profile to include
+  - [x] Name (Pet's)
+  - [x] Breed
+  - [x] Sex
+  - [x] Birthday
+  - [x] Size
+- [x] As a user, I would like the ability to edit my pet's profile
+- [x] As a user, I would like to have the ability to delete my pet's profile
+- [ ] As a user, I would like to see other matched pets to make a selection for potential pet friends
+- [ ] As a user, I would like my selected pet profiles to be stored so I can visit this list whenever I want
+- [ ] As a user, I would like delete unwanted pet profiles
 
 ## Target Audience
 
