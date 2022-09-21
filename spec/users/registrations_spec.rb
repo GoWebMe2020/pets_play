@@ -147,6 +147,27 @@ describe "Registrations Controller", type: :request do
         expect(User.count).to be(0)
         expect(User.first).to be(nil)
       end
+
+      it "if the user has pets" do
+        user = User.create!(email: "test@mail.com", password: "123456", password_confirmation: "123456")
+        pet_1 = Pet.create!(name: "Flower", breed: "Samoyed", sex: "Male", size: "Medium", birthday: DateTime.new(2015, 11, 22), user_id: user.id)
+        pet_2 = Pet.create!(name: "Leaf", breed: "Samoyed", sex: "Female", size: "Medium", birthday: DateTime.new(2015, 11, 22), user_id: user.id)
+
+        post "/sessions", :params => {
+          user: {
+            email: "test@mail.com",
+            password: "123456"
+          }
+        }
+
+        delete "/registrations/#{user.id}"
+
+        response_data = JSON.parse(response.body)
+
+        expect(response_data["status"]).to eq("destroyed")
+        expect(User.count).to be(0)
+        expect(Pet.count).to be(0)
+      end
     end
 
     context "Does not delete a user" do
