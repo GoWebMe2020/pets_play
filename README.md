@@ -40,7 +40,10 @@ Have a API only application
 
 *Note: These user stories are API based only.*
 
-- As a user, I would like to register a profile for my pet
+- As a user, I would like to register an account for myself with and email and password
+- As a user, I would like to be able to log in with my account
+- As a user, I would like to log out from my account
+- As a user, I would like to create a profile for my pet
 - As a user, I would like the profile to include
   - Name (Pet's)
   - Surname (Owner's)

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  protect_from_forgery
+  include CurrentUserConcern
+
   def create
     # The :authenticate mehtod is bult in because we used `has_secure_password` in the User model.
     # This is built in Rails Magic
@@ -15,6 +16,27 @@ class SessionsController < ApplicationController
     else
       render json: { status: 401 }
     end
+  end
+
+  def logged_in
+    if @current_user
+      render json: {
+        user_logged_in: true,
+        user: @current_user
+      }
+    else
+      render json: {
+        user_logged_in: false
+      }
+    end
+  end
+
+  def logout
+    reset_session
+    render json: {
+      status: 200,
+      user_logged_in: false
+    }
   end
 
 end
