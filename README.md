@@ -28,6 +28,7 @@ Have a API only application
 - Ruby 3.0.2 (`rvm use 3.0.2`)
 - Ruby on Rails 6.1.7
 - Postgres Setup (https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-ruby-on-rails-application-on-macos)
+
 - RSpec (https://relishapp.com/rspec/rspec-rails/docs/gettingstarted)
 
 *Notes: This backend will act as an API only. The frontend will require permissions to make requests and get responses to this API.*

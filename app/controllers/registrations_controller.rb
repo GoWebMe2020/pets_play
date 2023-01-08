@@ -2,17 +2,22 @@ class RegistrationsController < ApplicationController
   include CurrentUserConcern
 
   def create
-    user = User.create!(user_params)
+    user = User.create(user_params)
 
-    if user
+    if user.valid?
       session[:user_id] = user.id
       render json: {
         status: :created,
         user_logged_in: true,
-        user: user
+        user: user,
+        message: "You have successfully registered an account."
       }
     else
-      render json: { status: 500 }
+      render json: {
+        status: 422,
+        user_logged_in: false,
+        message: user.errors.full_messages.first
+      }
     end
   end
 
@@ -55,5 +60,4 @@ class RegistrationsController < ApplicationController
       password_confirmation: params["user"]["password_confirmation"]
     }
   end
-
 end
